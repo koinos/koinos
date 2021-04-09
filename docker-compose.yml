@@ -10,6 +10,17 @@ services:
       volumes:
          - "${BASEDIR}:/koinos"
 
+   jsonrpc:
+      image: koinos/koinos-jsonrpc
+      depends_on:
+         - amqp
+         - config
+      volumes:
+         - "${BASEDIR}:/koinos"
+      ports:
+         - "8080:8080"
+      command: --basedir=/koinos
+
    mempool:
       image: koinos/koinos-mempool
       depends_on:
