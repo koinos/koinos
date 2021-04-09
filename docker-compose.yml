@@ -1,0 +1,62 @@
+services:
+   amqp:
+      image: rabbitmq:3-management
+      ports:
+         - "5672:5672"
+         - "15672:15672"
+
+   config:
+      build: ./config
+      volumes:
+         - "${BASEDIR}:/koinos"
+
+   mempool:
+      image: koinos/koinos-mempool
+      depends_on:
+         - amqp
+         - config
+      volumes:
+         - "${BASEDIR}:/koinos"
+      command: --basedir=/koinos
+
+   block-store:
+      image: koinos/koinos-block-store
+      depends_on:
+         - amqp
+         - config
+      volumes:
+         - "${BASEDIR}:/koinos"
+      command: --basedir=/koinos
+
+   chain:
+      image: koinos/koinos-chain
+      depends_on:
+         - amqp
+         - block-store
+         - mempool
+         - config
+      volumes:
+         - "${BASEDIR}:/koinos"
+      command: --basedir=/koinos
+
+   p2p:
+      image: koinos/koinos-p2p
+      depends_on:
+         - amqp
+         - block-store
+         - chain
+         - config
+      volumes:
+         - "${BASEDIR}:/koinos"
+      command: --basedir=/koinos -G
+
+   block-producer:
+      image: koinos/koinos-block-producer
+      depends_on:
+         - amqp
+         - mempool
+         - chain
+         - config
+      volumes:
+         - "${BASEDIR}:/koinos"
+      command: --basedir=/koinos

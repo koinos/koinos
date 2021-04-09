@@ -1,0 +1,7 @@
+global:
+  amqp: amqp://guest:guest@amqp:5672/
+  log-level: info
+  instance-id: Koinos
+
+p2p:
+  seed: test-seed
