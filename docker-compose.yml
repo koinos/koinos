@@ -11,7 +11,7 @@ services:
          - "${BASEDIR}:/koinos"
 
    jsonrpc:
-      image: koinos/koinos-jsonrpc
+      image: koinos/koinos-jsonrpc:${JSONRPC_TAG:-latest}
       depends_on:
          - amqp
          - config
@@ -22,7 +22,7 @@ services:
       command: --basedir=/koinos
 
    mempool:
-      image: koinos/koinos-mempool
+      image: koinos/koinos-mempool:${MEMPOOL_TAG:-latest}
       depends_on:
          - amqp
          - config
@@ -30,8 +30,8 @@ services:
          - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
 
-   block-store:
-      image: koinos/koinos-block-store
+   block_store:
+      image: koinos/koinos-block-store:${BLOCK_STORE_TAG:-latest}
       depends_on:
          - amqp
          - config
@@ -40,10 +40,10 @@ services:
       command: --basedir=/koinos
 
    chain:
-      image: koinos/koinos-chain
+      image: koinos/koinos-chain:${CHAIN_TAG:-latest}
       depends_on:
          - amqp
-         - block-store
+         - block_store
          - mempool
          - config
       volumes:
@@ -51,18 +51,18 @@ services:
       command: --basedir=/koinos
 
    p2p:
-      image: koinos/koinos-p2p
+      image: koinos/koinos-p2p:${P2P_TAG:-latest}
       depends_on:
          - amqp
-         - block-store
+         - block_store
          - chain
          - config
       volumes:
          - "${BASEDIR}:/koinos"
       command: --basedir=/koinos -G
 
-   block-producer:
-      image: koinos/koinos-block-producer
+   block_producer:
+      image: koinos/koinos-block-producer:${BLOCK_PRODUCER_TAG:-latest}
       depends_on:
          - amqp
          - mempool
