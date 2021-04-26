@@ -7,4 +7,4 @@ p2p:
   seed: test-seed
 
 jsonrpc:
-  listen: tcp/8080
+  listen: /tcp/8080
