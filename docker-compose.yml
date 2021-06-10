@@ -59,7 +59,9 @@ services:
          - config
       volumes:
          - "${BASEDIR}:/koinos"
-      command: --basedir=/koinos -G
+      ports:
+         - "8888:8888"
+      command: --basedir=/koinos -G -l /ip4/0.0.0.0/tcp/8888
 
    block_producer:
       image: koinos/koinos-block-producer:${BLOCK_PRODUCER_TAG:-latest}
