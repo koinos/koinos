@@ -2,8 +2,8 @@ services:
    amqp:
       image: rabbitmq:3-management
       ports:
-         - "5672:5672"
-         - "15672:15672"
+         - "${AMQP_INTERFACE:-127.0.0.1}:5672:5672"
+         - "${AMQP_INTERFACE:-127.0.0.1}:15672:15672"
 
    config:
       build: ./config
@@ -18,7 +18,7 @@ services:
       volumes:
          - "${BASEDIR}:/koinos"
       ports:
-         - "8080:8080"
+         - "${JSONRPC_INTERFACE:-127.0.0.1}:8080:8080"
       command: --basedir=/koinos
 
    mempool:
@@ -59,7 +59,9 @@ services:
          - config
       volumes:
          - "${BASEDIR}:/koinos"
-      command: --basedir=/koinos -G
+      ports:
+         - "${P2P_INTERFACE:-0.0.0.0}:8888:8888"
+      command: --basedir=/koinos -G -l /ip4/0.0.0.0/tcp/8888
 
    block_producer:
       image: koinos/koinos-block-producer:${BLOCK_PRODUCER_TAG:-latest}
