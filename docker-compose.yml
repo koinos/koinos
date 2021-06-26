@@ -39,37 +39,36 @@ services:
          - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
 
-   chain:
-      image: koinos/koinos-chain:${CHAIN_TAG:-latest}
-      depends_on:
-         - amqp
-         - block_store
-         - mempool
-         - config
-      volumes:
-         - "${BASEDIR}:/koinos"
-      command: --basedir=/koinos
+#   chain:
+#      image: koinos/koinos-chain:${CHAIN_TAG:-latest}
+#      depends_on:
+#         - amqp
+#         - block_store
+#         - mempool
+#         - config
+#      volumes:
+#         - "${BASEDIR}:/koinos"
+#      command: --basedir=/koinos
 
-   p2p:
-      image: koinos/koinos-p2p:${P2P_TAG:-latest}
-      depends_on:
-         - amqp
-         - block_store
-         - chain
-         - config
-      volumes:
-         - "${BASEDIR}:/koinos"
-      ports:
-         - "${P2P_INTERFACE:-0.0.0.0}:8888:8888"
-      command: --basedir=/koinos -G -l /ip4/0.0.0.0/tcp/8888
+#   p2p:
+#      image: koinos/koinos-p2p:${P2P_TAG:-latest}
+#      depends_on:
+#         - amqp
+#         - block_store
+#         - config
+#      volumes:
+#         - "${BASEDIR}:/koinos"
+#      ports:
+#         - "${P2P_INTERFACE:-0.0.0.0}:8888:8888"
+#      command: --basedir=/koinos -G -l /ip4/0.0.0.0/tcp/8888
 
-   block_producer:
-      image: koinos/koinos-block-producer:${BLOCK_PRODUCER_TAG:-latest}
-      depends_on:
-         - amqp
-         - mempool
-         - chain
-         - config
-      volumes:
-         - "${BASEDIR}:/koinos"
-      command: --basedir=/koinos
+#   block_producer:
+#      image: koinos/koinos-block-producer:${BLOCK_PRODUCER_TAG:-latest}
+#      depends_on:
+#         - amqp
+#         - mempool
+#         - chain
+#         - config
+#      volumes:
+#         - "${BASEDIR}:/koinos"
+#      command: --basedir=/koinos
