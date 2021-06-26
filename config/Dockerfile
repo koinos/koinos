@@ -1,4 +1,5 @@
-FROM koinos/koinos-chain:latest as chain
+ARG CHAIN_TAG=latest
+FROM koinos/koinos-chain:${CHAIN_TAG} as chain
 
 FROM alpine:latest
 RUN apk update && \
