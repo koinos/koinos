@@ -1,4 +1,4 @@
-FROM koinos/koinos-chain:433-get-dev-key as chain
+FROM koinos/koinos-chain:latest as chain
 
 FROM alpine:latest
 RUN apk update && \
