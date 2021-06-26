@@ -3,8 +3,8 @@ global:
   log-level: info
   instance-id: Koinos
 
-p2p:
-  seed: test-seed
+block-producer:
+  algorithm: pow
 
 jsonrpc:
   listen: /tcp/8080

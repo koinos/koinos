@@ -6,7 +6,10 @@ services:
          - "${AMQP_INTERFACE:-127.0.0.1}:15672:15672"
 
    config:
-      build: ./config
+      build:
+         context: ./config
+         args:
+            - CONFIG_TAG=${CONFIG_TAG:-latest}
       volumes:
          - "${BASEDIR}:/koinos"
 
