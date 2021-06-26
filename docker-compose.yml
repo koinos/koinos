@@ -9,7 +9,7 @@ services:
       build:
          context: ./config
          args:
-            - CHAIN_TAG=${CHAIN_TAG:-latest}
+            - CONFIG_TAG=${CONFIG_TAG:-latest}
       volumes:
          - "${BASEDIR}:/koinos"
 

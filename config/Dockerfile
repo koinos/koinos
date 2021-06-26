@@ -1,5 +1,5 @@
-ARG CHAIN_TAG=latest
-FROM koinos/koinos-chain:${CHAIN_TAG} as chain
+ARG CONFIG_TAG=latest
+FROM koinos/koinos-chain:${CONFIG_TAG} as chain
 
 FROM alpine:latest
 RUN apk update && \
