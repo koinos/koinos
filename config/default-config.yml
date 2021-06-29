@@ -3,7 +3,7 @@ global:
   log-level: info
   instance-id: Koinos
 
-block-producer:
+block_producer:
   algorithm: pow
   pow-contract-id: MNF4ikZwygzCshy20gKe1nCMIcmM=
 
