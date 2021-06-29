@@ -6,3 +6,4 @@ if [[ ! -f /koinos/block_producer/private.key ]]; then
 fi
 
 rsync -a -v --ignore-existing /koinos-config/default-config.yml /koinos/config.yml
+rsync -a -v --ignore-existing /koinos-config/genesis.pub /koinos/chain/genesis.pub
