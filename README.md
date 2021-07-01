@@ -1,6 +1,6 @@
 # Koinos
 
-The Koinos Blockchain consists of multiple interdependent microservices that communicate via AMQP. Each microserive has been dockerized and can easily be ran as a unit with Docker Compose.
+The Koinos Blockchain consists of multiple interdependent microservices that communicate via AMQP. Each microservice has been dockerized and can easily be run as a unit with Docker Compose.
 
 Images are automatically uploaded to [Docker Hub](https://hub.docker.com/u/koinos). `latest` tracks `master` on each microservice repo. Feature branches are uploaded with their branch name as the image tag.
 
@@ -18,4 +18,4 @@ By default, each container will use `~/.koinos` on the host as their base direct
 
 You will find `config.yml` in the base directory, which can be modified to change config on the microservices. At present, you need to restart docker compose for the new config to be applied. (That is a future TODO)
 
-Different images can be ran by setting environment variables or setting them in `.env`. For each microservice, append `_TAG` (e.g. `export P2P_TAG=64-auto-gossip`).
+Different images can be run by setting environment variables or setting them in `.env`. For each microservice, append `_TAG` (e.g. `export P2P_TAG=64-auto-gossip`).
