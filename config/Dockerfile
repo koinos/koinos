@@ -1,5 +1,5 @@
 ARG CONFIG_TAG=latest
-FROM koinos/koinos-chain:${CONFIG_TAG} as chain
+FROM koinos/koinos-tools:${CONFIG_TAG} as tools
 
 FROM alpine:latest
 RUN apk update && \
@@ -9,6 +9,6 @@ RUN apk update && \
             libstdc++
 
 ADD . /koinos-config
-COPY --from=chain /usr/local/bin/koinos_get_dev_key /usr/local/bin
+COPY --from=tools /usr/local/bin/koinos_get_dev_key /usr/local/bin
 
 CMD [ "bash", "/koinos-config/run.sh" ]
