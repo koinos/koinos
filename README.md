@@ -19,3 +19,15 @@ By default, each container will use `~/.koinos` on the host as their base direct
 You will find `config.yml` in the base directory, which can be modified to change config on the microservices. At present, you need to restart docker compose for the new config to be applied. (That is a future TODO)
 
 Different images can be run by setting environment variables or setting them in `.env`. For each microservice, append `_TAG` (e.g. `export P2P_TAG=64-auto-gossip`).
+
+By default the node will only run core required microservices (chain, block_store, mempool, and p2p).
+
+You can run optional microservices by enabling the associate docker compose profiles:
+
+ - `block_production` to enable the block production.
+ - `api` to enable JSON-RPC API handling.
+ - `transaction_history` to enable transaction history tracking.
+
+These profiles can be set with the `--profile` options (i.e. `docker-compose --profile api up `) or by setting the `COMPOSE_PROFILES` environment variable during invocation or in `.env`.
+
+For more information on docker compose profiles, please read the official [documentation](https://docs.docker.com/compose/profiles/).

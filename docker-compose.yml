@@ -13,17 +13,6 @@ services:
       volumes:
          - "${BASEDIR}:/koinos"
 
-   jsonrpc:
-      image: koinos/koinos-jsonrpc:${JSONRPC_TAG:-latest}
-      depends_on:
-         - amqp
-         - config
-      volumes:
-         - "${BASEDIR}:/koinos"
-      ports:
-         - "${JSONRPC_INTERFACE:-127.0.0.1}:8080:8080"
-      command: --basedir=/koinos
-
    mempool:
       image: koinos/koinos-mempool:${MEMPOOL_TAG:-latest}
       depends_on:
@@ -68,9 +57,33 @@ services:
 
    block_producer:
       image: koinos/koinos-block-producer:${BLOCK_PRODUCER_TAG:-latest}
+      profiles: ["block_producer", "all"]
       depends_on:
          - amqp
          - mempool
+         - chain
+         - config
+      volumes:
+         - "${BASEDIR}:/koinos"
+      command: --basedir=/koinos
+
+   jsonrpc:
+      image: koinos/koinos-jsonrpc:${JSONRPC_TAG:-latest}
+      profiles: ["jsonrpc", "all"]
+      depends_on:
+         - amqp
+         - config
+      volumes:
+         - "${BASEDIR}:/koinos"
+      ports:
+         - "${JSONRPC_INTERFACE:-127.0.0.1}:8080:8080"
+      command: --basedir=/koinos
+
+   transaction_store:
+      image: koinos/koinos-transaction-store:${TRANSACTION_STORE_TAG:-latest}
+      profiles: ["transaction_store", "all"]
+      depends_on:
+         - amqp
          - chain
          - config
       volumes:
