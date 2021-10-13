@@ -22,10 +22,10 @@ Different images can be run by setting environment variables or setting them in 
 
 By default the node will only run core required microservices (chain, block_store, mempool, and p2p).
 
-You can run optional microservices by enabling the associate docker compose profiles:
+You can run optional microservices by enabling the associated docker compose profiles:
 
  - `block_production` to enable the block production.
- - `api` to enable JSON-RPC API handling.
+ - `jsonrpc` to enable JSON-RPC API handling.
  - `transaction_history` to enable transaction history tracking.
 
 These profiles can be set with the `--profile` options (i.e. `docker-compose --profile api up `) or by setting the `COMPOSE_PROFILES` environment variable during invocation or in `.env`.
