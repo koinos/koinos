@@ -10,6 +10,8 @@ services:
          context: ./config
          args:
             - CONFIG_TAG=${CONFIG_TAG:-latest}
+      environment:
+         - DESCRIPTORS_TAG=${DESCRIPTORS_TAG:-master}
       volumes:
          - "${BASEDIR}:/koinos"
 
