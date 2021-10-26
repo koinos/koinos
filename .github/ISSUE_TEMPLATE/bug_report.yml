@@ -37,7 +37,7 @@ body:
   attributes:
     label: Environment
     description: |
-      examples:
+      Examples:
         - **OS**: Ubuntu 20.04
     value: |
         - OS:
