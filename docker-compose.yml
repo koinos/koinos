@@ -55,7 +55,7 @@ services:
          - "${BASEDIR}:/koinos"
       ports:
          - "${P2P_INTERFACE:-0.0.0.0}:8888:8888"
-      command: --basedir=/koinos -l /ip4/0.0.0.0/tcp/8888
+      command: --basedir=/koinos
 
    block_producer:
       image: koinos/koinos-block-producer:${BLOCK_PRODUCER_TAG:-latest}
