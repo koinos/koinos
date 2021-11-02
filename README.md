@@ -24,7 +24,7 @@ By default the node will only run core required microservices (chain, block_stor
 
 You can run optional microservices by enabling the associated docker compose profiles:
 
- - `block_production` to enable the block production.
+ - `block_producer` to enable the block production.
  - `jsonrpc` to enable JSON-RPC API handling.
  - `transaction_history` to enable transaction history tracking.
 
