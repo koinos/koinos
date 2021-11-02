@@ -5,7 +5,7 @@ global:
 
 block_producer:
   algorithm: pow
-  pow-contract-id: MNF4ikZwygzCshy20gKe1nCMIcmM=
+  pow-contract-id: 15im92XgZiV39tcKMhMGtDYhJjXPMjUu8r
 
 jsonrpc:
   listen: /tcp/8080
