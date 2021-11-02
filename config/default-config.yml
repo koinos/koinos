@@ -11,5 +11,6 @@ jsonrpc:
   listen: /tcp/8080
 
 p2p:
+  listen: /ip4/0.0.0.0/tcp/8888
   peer:
     - /ip4/45.56.104.152/tcp/8888/p2p/Qma3pqGBeUVzUPwn6TE6WWP14arjc5JKVvZac5BpJU1hkr
