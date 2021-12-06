@@ -91,3 +91,14 @@ services:
       volumes:
          - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
+
+   contract_meta_store:
+      image: koinos/koinos-contract-meta-store:${CONTRACT_META_STORE_TAG:-latest}
+      profiles: ["contract_meta_store", "all"]
+      depends_on:
+         - amqp
+         - config
+         - chain
+      volumes:
+         - "${BASEDIR}:/koinos"
+      command: --basedir=/koinos
