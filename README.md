@@ -26,7 +26,7 @@ You can run optional microservices by enabling the associated docker compose pro
 
  - `block_producer` to enable the block production.
  - `jsonrpc` to enable JSON-RPC API handling.
- - `transaction_history` to enable transaction history tracking.
+ - `transaction_store` to enable transaction history tracking.
 
 These profiles can be set with the `--profile` options (i.e. `docker-compose --profile api up `) or by setting the `COMPOSE_PROFILES` environment variable during invocation or in `.env`.
 
