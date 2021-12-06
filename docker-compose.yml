@@ -97,6 +97,7 @@ services:
       profiles: ["contract_meta_store", "all"]
       depends_on:
          - amqp
+         - chain
          - config
       volumes:
          - "${BASEDIR}:/koinos"
