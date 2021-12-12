@@ -4,6 +4,22 @@ The Koinos Blockchain consists of multiple interdependent microservices that com
 
 Images are automatically uploaded to [Docker Hub](https://hub.docker.com/u/koinos). `latest` tracks `master` on each microservice repo. Feature branches are uploaded with their branch name as the image tag.
 
+## Quickstart For Ubuntu 20.04 LTS (focal)
+
+Copy and paste the following commands into a fresh Ubuntu 20.04 LTS host to bring up a Koinos node.
+
+```console
+apt update -y
+apt upgrade -y
+apt install -y docker.io git
+curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+git clone https://github.com/koinos/koinos.git koinos
+cd koinos
+docker-compose up -d
+docker-compose logs -f
+```
+
 ## Install Docker Compose
 
 You will need to install Docker on MacOS or Windows first . You can follow their instructions for installation [here](https://www.docker.com/products/docker-desktop). Docker desktop comes with a recent version of docker-compose.
