@@ -9,7 +9,7 @@ if [[ ! -f /koinos/block_producer/private.key ]]; then
 fi
 
 mkdir -p /koinos/chain
-rsync -a -v --ignore-existing /koinos-config/genesis.pub /koinos/chain/genesis.pub
+rsync -a -v --ignore-existing /koinos-config/genesis_data.json /koinos/chain/genesis_data.json
 
 mkdir -p /koinos/jsonrpc/descriptors
 pushd /koinos/jsonrpc/descriptors
