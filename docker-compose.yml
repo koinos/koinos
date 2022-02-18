@@ -99,7 +99,6 @@ services:
          - amqp
          - chain
          - config
-         - chain
       volumes:
          - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
