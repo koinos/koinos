@@ -15,4 +15,4 @@ jsonrpc:
 p2p:
   listen: /ip4/0.0.0.0/tcp/8888
   peer:
-    - /dns4/seed.koinos.io/tcp/8888/p2p/QmRycTDNDiWSLtBCGYuLeZhKMuhJfCZVDwzasic3dticnb
+    - /ip4/96.126.102.53/tcp/8888/p2p/QmSbHeJ8TWYu5PbKNhyXu1Jq2fLUKV2UdPasQpqeBwttjr
