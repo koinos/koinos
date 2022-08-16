@@ -9,6 +9,9 @@ block_producer:
   vhp-contract-id: 1JZqj7dDrK5LzvdJgufYBJNUFo88xBoWC8
   # producer:
 
+chain:
+  fork-algorithm: block-time
+
 jsonrpc:
   listen: /tcp/8080
 
