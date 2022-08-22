@@ -4,8 +4,13 @@ global:
   instance-id: Koinos
 
 block_producer:
-  algorithm: pow
-  pow-contract-id: 15im92XgZiV39tcKMhMGtDYhJjXPMjUu8r
+  algorithm: pob
+  pob-contract-id: 198RuEouhgiiaQm7uGfaXS6jqZr6g6nyoR
+  vhp-contract-id: 1JZqj7dDrK5LzvdJgufYBJNUFo88xBoWC8
+  # producer:
+
+chain:
+  fork-algorithm: block-time
 
 jsonrpc:
   listen: /tcp/8080
@@ -13,4 +18,4 @@ jsonrpc:
 p2p:
   listen: /ip4/0.0.0.0/tcp/8888
   peer:
-    - /dns4/seed.koinos.io/tcp/8888/p2p/QmRycTDNDiWSLtBCGYuLeZhKMuhJfCZVDwzasic3dticnb
+    - /dns4/seed.koinos.io/tcp/8888/p2p/QmcGiTpSm6YrmYo3rWoqrCPez2aJY4VdraBQsGsZKwFRuG
