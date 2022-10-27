@@ -1,6 +1,8 @@
 services:
    amqp:
       image: rabbitmq:3-management
+      volumes:
+         - "./config/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf"
       ports:
          - "${AMQP_INTERFACE:-127.0.0.1}:5672:5672"
          - "${AMQP_INTERFACE:-127.0.0.1}:15672:15672"
