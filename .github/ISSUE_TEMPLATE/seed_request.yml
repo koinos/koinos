@@ -1,0 +1,28 @@
+name: Seed request
+description: Request addition of a seed node
+title: "[SEED]: <title>"
+labels: [seed]
+body:
+- type: textarea
+  attributes:
+    label: Seed node
+    description: What is the address of the seed node you wish to add? Only seeds using domain names will be accepted.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Node association
+    description: |
+      What organization/projects is the node associated with?
+  validations:
+    required: false
+- type: checkboxes
+  attributes:
+    options:
+    - label: I agree to keep this node updated with the latest Koinos security updates
+      required: true
+- type: checkboxes
+  attributes:
+    options:
+    - label: I understand this node may be removed from the default config without notice
+      required: true
