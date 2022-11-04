@@ -18,11 +18,13 @@ body:
     required: false
 - type: checkboxes
   attributes:
+    label: ​​
     options:
-    - label: I agree to keep this node updated with the latest Koinos security updates
+    - label: I will keep this node updated with the latest Koinos security updates
       required: true
 - type: checkboxes
   attributes:
+    label: ​ ​​
     options:
     - label: I understand this node may be removed from the default config without notice
       required: true
