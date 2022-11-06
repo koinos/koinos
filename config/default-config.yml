@@ -10,7 +10,7 @@ block_producer:
   # producer:
 
 chain:
-  fork-algorithm: block-time
+  fork-algorithm: pob
 
 jsonrpc:
   listen: /tcp/8080
