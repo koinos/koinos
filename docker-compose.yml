@@ -1,3 +1,5 @@
+name: koinos-harbinger
+
 services:
    amqp:
       image: rabbitmq:3-management
