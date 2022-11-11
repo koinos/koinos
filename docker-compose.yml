@@ -1,3 +1,5 @@
+name: koinos-harbinger
+
 services:
    amqp:
       image: rabbitmq:3-management
@@ -7,7 +9,7 @@ services:
          - "${AMQP_INTERFACE:-127.0.0.1}:5672:5672"
          - "${AMQP_INTERFACE:-127.0.0.1}:15672:15672"
 
-   config:
+   harbinger_config:
       build:
          context: ./config
          args:
@@ -21,7 +23,7 @@ services:
       image: koinos/koinos-mempool:${MEMPOOL_TAG:-latest}
       depends_on:
          - amqp
-         - config
+         - harbinger_config
       volumes:
          - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
@@ -30,7 +32,7 @@ services:
       image: koinos/koinos-block-store:${BLOCK_STORE_TAG:-latest}
       depends_on:
          - amqp
-         - config
+         - harbinger_config
       volumes:
          - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
@@ -41,7 +43,7 @@ services:
          - amqp
          - block_store
          - mempool
-         - config
+         - harbinger_config
       volumes:
          - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
@@ -52,7 +54,7 @@ services:
          - amqp
          - block_store
          - chain
-         - config
+         - harbinger_config
       volumes:
          - "${BASEDIR}:/koinos"
       ports:
@@ -66,7 +68,7 @@ services:
          - amqp
          - mempool
          - chain
-         - config
+         - harbinger_config
       volumes:
          - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
@@ -76,7 +78,7 @@ services:
       profiles: ["jsonrpc", "all"]
       depends_on:
          - amqp
-         - config
+         - harbinger_config
       volumes:
          - "${BASEDIR}:/koinos"
       ports:
@@ -89,7 +91,7 @@ services:
       depends_on:
          - amqp
          - chain
-         - config
+         - harbinger_config
       volumes:
          - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
@@ -100,7 +102,7 @@ services:
       depends_on:
          - amqp
          - chain
-         - config
+         - harbinger_config
       volumes:
          - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
