@@ -73,7 +73,7 @@ services:
 
    jsonrpc:
       image: koinos/koinos-jsonrpc:${JSONRPC_TAG:-latest}
-      profiles: ["jsonrpc", "all"]
+      profiles: ["jsonrpc", "api", "all"]
       depends_on:
          - amqp
          - config
@@ -85,7 +85,7 @@ services:
 
    transaction_store:
       image: koinos/koinos-transaction-store:${TRANSACTION_STORE_TAG:-latest}
-      profiles: ["transaction_store", "all"]
+      profiles: ["transaction_store", "api", "all"]
       depends_on:
          - amqp
          - chain
@@ -96,11 +96,23 @@ services:
 
    contract_meta_store:
       image: koinos/koinos-contract-meta-store:${CONTRACT_META_STORE_TAG:-latest}
-      profiles: ["contract_meta_store", "all"]
+      profiles: ["contract_meta_store", "api", "all"]
       depends_on:
          - amqp
          - chain
          - config
       volumes:
          - "${BASEDIR}:/koinos"
+      command: --basedir=/koinos
+
+   account_history:
+      image: koinos/koinos-account-history:${ACCOUNT_HISTORY_TAG:-latest}
+      profiles: ["account_history", "api", "all"]
+      depends_on:
+        - amqp
+        - chain
+        - block_store
+        - config
+      volumes:
+        - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
