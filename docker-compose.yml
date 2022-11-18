@@ -3,25 +3,34 @@ services:
       image: rabbitmq:3-management
       volumes:
          - "./config/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf"
+      configs:
+         - source: amqp-config
+           target: /etc/rabbitmq/rabbitmq.conf
       ports:
          - "${AMQP_INTERFACE:-127.0.0.1}:5672:5672"
          - "${AMQP_INTERFACE:-127.0.0.1}:15672:15672"
 
-   config:
-      build:
-         context: ./config
-         args:
-            - CONFIG_TAG=${CONFIG_TAG:-latest}
-      environment:
-         - DESCRIPTORS_TAG=${DESCRIPTORS_TAG:-master}
+   chain:
+      image: koinos/koinos-chain:${CHAIN_TAG:-latest}
+      depends_on:
+         - amqp
+      configs:
+         - source: koinos-config
+           target: /koinos/config.yml
+         - source: genesis-data
+           target: /koinos/chain/genesis_data.json
       volumes:
          - "${BASEDIR}:/koinos"
+      command: --basedir=/koinos
 
    mempool:
       image: koinos/koinos-mempool:${MEMPOOL_TAG:-latest}
       depends_on:
          - amqp
-         - config
+         - chain
+      configs:
+         - source: koinos-config
+           target: /koinos/config.yml
       volumes:
          - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
@@ -30,18 +39,10 @@ services:
       image: koinos/koinos-block-store:${BLOCK_STORE_TAG:-latest}
       depends_on:
          - amqp
-         - config
-      volumes:
-         - "${BASEDIR}:/koinos"
-      command: --basedir=/koinos
-
-   chain:
-      image: koinos/koinos-chain:${CHAIN_TAG:-latest}
-      depends_on:
-         - amqp
-         - block_store
-         - mempool
-         - config
+         - chain
+      configs:
+         - source: koinos-config
+           target: /koinos/config.yml
       volumes:
          - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
@@ -52,7 +53,9 @@ services:
          - amqp
          - block_store
          - chain
-         - config
+      configs:
+         - source: koinos-config
+           target: /koinos/config.yml
       volumes:
          - "${BASEDIR}:/koinos"
       ports:
@@ -66,7 +69,9 @@ services:
          - amqp
          - mempool
          - chain
-         - config
+      configs:
+         - source: koinos-config
+           target: /koinos/config.yml
       volumes:
          - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
@@ -76,7 +81,12 @@ services:
       profiles: ["jsonrpc", "api", "all"]
       depends_on:
          - amqp
-         - config
+         - chain
+      configs:
+         - source: koinos-config
+           target: /koinos/config.yml
+         - source: koinos-descriptors
+           target: /koinos/jsonrpc/descriptors/koinos_descriptors.pb
       volumes:
          - "${BASEDIR}:/koinos"
       ports:
@@ -89,7 +99,9 @@ services:
       depends_on:
          - amqp
          - chain
-         - config
+      configs:
+         - source: koinos-config
+           target: /koinos/config.yml
       volumes:
          - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
@@ -100,7 +112,9 @@ services:
       depends_on:
          - amqp
          - chain
-         - config
+      configs:
+         - source: koinos-config
+           target: /koinos/config.yml
       volumes:
          - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
@@ -112,7 +126,22 @@ services:
         - amqp
         - chain
         - block_store
-        - config
+      configs:
+         - source: koinos-config
+           target: /koinos/config.yml
       volumes:
         - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
+
+configs:
+   amqp-config:
+      file: ./config/rabbitmq.conf
+
+   koinos-config:
+      file: ./config/config.yml
+
+   genesis-data:
+      file: ./config/genesis_data.json
+
+   koinos-descriptors:
+      file: ./config/koinos_descriptors.pb
