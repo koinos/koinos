@@ -1,4 +1,4 @@
-name: Auto assign to project
+name: Auto Assign to Project
 
 on:
   issues:
@@ -9,5 +9,5 @@ on:
 jobs:
   assign_to_project:
     uses: koinos/koinos-github-workflows/.github/workflows/add_to_project.yml@master
-    with:
+    secrets:
       github-token: ${{ secrets.ISSUE_MANAGEMENT_TOKEN }}

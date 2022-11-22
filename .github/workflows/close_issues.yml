@@ -1,5 +1,4 @@
 name: Close inactive issues
-
 on:
   schedule:
     - cron: "0 0 * * *" # Run every day at midnight
@@ -7,4 +6,5 @@ on:
 jobs:
   close-issues:
     uses: koinos/koinos-github-workflows/.github/workflows/close_issues.yml@master
-    with:
+    secrets:
+      github-token: ${{ secrets.ISSUE_MANAGEMENT_TOKEN }}
