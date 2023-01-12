@@ -12,6 +12,8 @@ block_producer:
 
 jsonrpc:
   listen: /tcp/8080
+  blacklist:
+    - block_store.add_block
 
 p2p:
   listen: /ip4/0.0.0.0/tcp/8888
