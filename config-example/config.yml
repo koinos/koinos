@@ -1,22 +1,57 @@
 global:
-  amqp: amqp://guest:guest@amqp:5672/
-  log-level: info
-  instance-id: Koinos
-  fork-algorithm: pob
+  amqp: amqp://guest:guest@amqp:5672/                 # AMQP server URL
+  log-level: info                                     # Log filtering level (debug, info, warn, error)
+  instance-id: Koinos                                 # ID that uniquely identifies the instance
+  fork-algorithm: pob                                 # Fork resolution algorithm (fifo, pob, block-time)
+  # jobs: 32                                          # Number of jobs to run
+  # reset: true                                       # DANGEROUS: Resets the entire node. To reset a single microservice, set this in the microservice config
+
+# account-history:
 
 block_producer:
-  algorithm: pob
-  pob-contract-id: 159myq5YUhhoVWu3wsHKHiJYKPKGUrGiyv
-  vhp-contract-id: 1AdzuXSpC6K9qtXdCBgD5NUpDNwHjMgrc9
-  # producer:
+  algorithm: pob                                      # Block production algorithm
+  pob-contract-id: 159myq5YUhhoVWu3wsHKHiJYKPKGUrGiyv # PoB contract address
+  vhp-contract-id: 1AdzuXSpC6K9qtXdCBgD5NUpDNwHjMgrc9 # VHP contract address
+  # producer:                                         # Address at which which blocks are produced
+  # private-key-file: private.key                     # File containing the private key with which blocks are produced
+  # max-inclusion-attempts: 2000                      # Maximum number of transactions attempted to be included in a block
+  # resources-lower-bound: 75                         # Percent resource utilization lower bound target to consider adequate for submission
+  # resources-upper-bound: 90                         # Percent resource utilization upper bound to consider block "full"
+  # gossip-production: false                          # Disable requiring p2p gossip before block production, this is not recommended
+  # approve-proposals:                                # Proposals to approve when producing blocks
+  # - PROPOSAL_ID
+
+# block_store:
+
+# chain:
+  # read-compute-bandwidth-limit: 10000000            # Compute bandwidth limit when reading contracts via the API
+
+# contract-meta-store:
 
 jsonrpc:
-  listen: /tcp/8080
+  listen: /tcp/8080                                   # Multiaddress on which to listen
+  blacklist:                                          # RPC targets to blacklist, can be an entire microservice (i.e. chain), or specific API calls
+    - block_store.add_block
+  # endpoint: /                                       # HTTP endpoint to listen on
+  # gateway-timeout: 3                                # Timeout in seconds to enqueue a request
+  # mq-timeout: 5                                     # Timeout in seconds to receive MQ response
+  # whitelist:                                        # RPC targets to whitelist
+  # - RPC
+
+# mempool:
+  # transaction-expiration: 120                       # Number of seconds a transaction should expire in
 
 p2p:
-  listen: /ip4/0.0.0.0/tcp/8888
-  peer:
+  listen: /ip4/0.0.0.0/tcp/8888                       # Multiaddress on which to listen
+  peer:                                               # Peer seed nodes
     - /dns4/seed.koinos.io/tcp/8888/p2p/Qmd2bkf65yCKVZb2PG3FiRQWzrYgKf47zGBFuoU5qdebEY
     - /dns4/seed.koinosblocks.com/tcp/8888/p2p/QmUNURuZxSu5wLnmBNJdwGtwjLmV5JxGhu4uNSAS8ZNcze
     - /dns4/seed-east.burnkoin.com/tcp/8888/p2p/QmYAC9nxqgVt2p8NvmxNFsoMpQS7c4zEBmsZndEBTRHNu4
-    - /dns4/seed-west.burnkoin.com/tcp/8888/p2p/QmcwsnczsFRxgkyYtTWK4dq6tbE5tpE48jtHp7nKAvy22V
+    - /dns4/seed-west.burnkoin.com/tcp/8888/p2p/QmcwsnczsFRxgkyYtTWK4dq6tbE5tpE48jtHp7nKAvy22V\
+  # checkpoint:                                       # Checkpoints required in synced chain
+  #  - BLOCK_HEIGHT:BLOCK_ID
+  # disable-gossip: true                              # Disables gossip, this is not recommended
+  # force-gossip: true                                # Forces gossip to always be enabled, this is not recommended
+  # seed: MY_SECRET_SEED_PHRASE                       # Seed string to generate a peer ID, this should only be used when configuring the node as a seed node
+
+# transaction-store:
