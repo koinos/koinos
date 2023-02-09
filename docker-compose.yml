@@ -100,6 +100,21 @@ services:
          - "${JSONRPC_INTERFACE:-0.0.0.0}:8080:8080"
       command: --basedir=/koinos
 
+   grpc:
+      image: koinos/koinos-grpc:${GRPC_TAG:-latest}
+      profiles: ["grpc", "api", "all"]
+      depends_on:
+         - amqp
+         - chain
+      configs:
+         - source: koinos-config
+           target: /koinos/config.yml
+      volumes:
+         - "${BASEDIR}:/koinos"
+      ports:
+         - "${GRPC_INTERFACE:-0.0.0.0}:50051:50051"
+      command: --basedir=/koinos
+
    transaction_store:
       image: koinos/koinos-transaction-store:${TRANSACTION_STORE_TAG:-latest}
       restart: always
