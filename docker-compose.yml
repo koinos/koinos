@@ -102,6 +102,7 @@ services:
 
    grpc:
       image: koinos/koinos-grpc:${GRPC_TAG:-latest}
+      restart: always
       profiles: ["grpc", "api", "all"]
       depends_on:
          - amqp
