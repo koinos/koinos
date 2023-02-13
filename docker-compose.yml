@@ -1,58 +1,66 @@
 services:
    amqp:
       image: rabbitmq:3-management
+      restart: always
       volumes:
          - "./config/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf"
+      configs:
+         - source: amqp-config
+           target: /etc/rabbitmq/rabbitmq.conf
       ports:
          - "${AMQP_INTERFACE:-127.0.0.1}:5672:5672"
          - "${AMQP_INTERFACE:-127.0.0.1}:15672:15672"
 
-   config:
-      build:
-         context: ./config
-         args:
-            - CONFIG_TAG=${CONFIG_TAG:-latest}
-      environment:
-         - DESCRIPTORS_TAG=${DESCRIPTORS_TAG:-master}
+   chain:
+      image: koinos/koinos-chain:${CHAIN_TAG:-latest}
+      restart: always
+      depends_on:
+         - amqp
+      configs:
+         - source: koinos-config
+           target: /koinos/config.yml
+         - source: genesis-data
+           target: /koinos/chain/genesis_data.json
       volumes:
          - "${BASEDIR}:/koinos"
+      command: --basedir=/koinos
 
    mempool:
       image: koinos/koinos-mempool:${MEMPOOL_TAG:-latest}
+      restart: always
       depends_on:
          - amqp
-         - config
+         - chain
+      configs:
+         - source: koinos-config
+           target: /koinos/config.yml
       volumes:
          - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
 
    block_store:
       image: koinos/koinos-block-store:${BLOCK_STORE_TAG:-latest}
+      restart: always
       depends_on:
          - amqp
-         - config
-      volumes:
-         - "${BASEDIR}:/koinos"
-      command: --basedir=/koinos
-
-   chain:
-      image: koinos/koinos-chain:${CHAIN_TAG:-latest}
-      depends_on:
-         - amqp
-         - block_store
-         - mempool
-         - config
+         - chain
+      configs:
+         - source: koinos-config
+           target: /koinos/config.yml
       volumes:
          - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
 
    p2p:
       image: koinos/koinos-p2p:${P2P_TAG:-latest}
+      restart: always
       depends_on:
          - amqp
          - block_store
          - chain
-         - config
+      configs:
+         - source: koinos-config
+           target: /koinos/config.yml
       volumes:
          - "${BASEDIR}:/koinos"
       ports:
@@ -61,58 +69,105 @@ services:
 
    block_producer:
       image: koinos/koinos-block-producer:${BLOCK_PRODUCER_TAG:-latest}
+      restart: always
       profiles: ["block_producer", "all"]
       depends_on:
          - amqp
          - mempool
          - chain
-         - config
+      configs:
+         - source: koinos-config
+           target: /koinos/config.yml
       volumes:
          - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
 
    jsonrpc:
       image: koinos/koinos-jsonrpc:${JSONRPC_TAG:-latest}
+      restart: always
       profiles: ["jsonrpc", "api", "all"]
       depends_on:
          - amqp
-         - config
+         - chain
+      configs:
+         - source: koinos-config
+           target: /koinos/config.yml
+         - source: koinos-descriptors
+           target: /koinos/jsonrpc/descriptors/koinos_descriptors.pb
       volumes:
          - "${BASEDIR}:/koinos"
       ports:
          - "${JSONRPC_INTERFACE:-0.0.0.0}:8080:8080"
       command: --basedir=/koinos
 
+   grpc:
+      image: koinos/koinos-grpc:${GRPC_TAG:-latest}
+      restart: always
+      profiles: ["grpc", "api", "all"]
+      depends_on:
+         - amqp
+         - chain
+      configs:
+         - source: koinos-config
+           target: /koinos/config.yml
+      volumes:
+         - "${BASEDIR}:/koinos"
+      ports:
+         - "${GRPC_INTERFACE:-0.0.0.0}:50051:50051"
+      command: --basedir=/koinos
+
    transaction_store:
       image: koinos/koinos-transaction-store:${TRANSACTION_STORE_TAG:-latest}
+      restart: always
       profiles: ["transaction_store", "api", "all"]
       depends_on:
          - amqp
          - chain
-         - config
+      configs:
+         - source: koinos-config
+           target: /koinos/config.yml
       volumes:
          - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
 
    contract_meta_store:
       image: koinos/koinos-contract-meta-store:${CONTRACT_META_STORE_TAG:-latest}
+      restart: always
       profiles: ["contract_meta_store", "api", "all"]
       depends_on:
          - amqp
          - chain
-         - config
+      configs:
+         - source: koinos-config
+           target: /koinos/config.yml
       volumes:
          - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
 
    account_history:
       image: koinos/koinos-account-history:${ACCOUNT_HISTORY_TAG:-latest}
+      restart: always
       profiles: ["account_history", "api", "all"]
       depends_on:
         - amqp
         - chain
         - block_store
-        - config
+      configs:
+         - source: koinos-config
+           target: /koinos/config.yml
       volumes:
         - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
+
+configs:
+   amqp-config:
+      file: ./config/rabbitmq.conf
+
+   koinos-config:
+      file: ./config/config.yml
+
+   genesis-data:
+      file: ./config/genesis_data.json
+
+   koinos-descriptors:
+      file: ./config/koinos_descriptors.pb
