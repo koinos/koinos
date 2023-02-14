@@ -6,9 +6,11 @@ Images are automatically uploaded to [Docker Hub](https://hub.docker.com/u/koino
 
 ## Install Docker Compose
 
-You will need to install Docker on MacOS or Windows first . You can follow their instructions for installation [here](https://www.docker.com/products/docker-desktop). Docker desktop comes with a recent version of docker-compose.
+Koinos requires Compose V2. The latest version of Docker Deskop on Linux, Mac, and Windows all support Compose V2.
 
-You may need to upgrade your version of docker-compose on Linux. Ubuntu 20.04 does not come with a recent enough version. Your mileage may vary depending on your distribution. You can follow the official [installation instructions](https://docs.docker.com/compose/install/) to upgrade your version of docker-compose if needed. At the time of writing, the current docker-compose version was `1.29.2`.
+Depending on your Linux distribution, you may need to install the compose plugin for Compose V2 support (Ubuntu 22.04 requires this).
+
+All installation instructions for Docker Desktop and the Compose plugin for all platforms can be found [here](https://docs.docker.com/compose/install/).
 
 ## Configure Koinos
 
