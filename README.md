@@ -40,14 +40,14 @@ You can run optional microservices by enabling the associated docker compose pro
  - `account_history` to enable account history tracking.
  - `contract_meta_store` to enable tracking of smart contract metadata.
 
-These profiles can be set with the `--profile` options (i.e. `docker-compose --profile api up `) or by setting the `COMPOSE_PROFILES` environment variable during invocation or in `.env`.
+These profiles can be set with the `--profile` options (i.e. `docker compose --profile api up `) or by setting the `COMPOSE_PROFILES` environment variable during invocation or in `.env`.
 
 For more information on docker compose profiles, please read the official [documentation](https://docs.docker.com/compose/profiles/).
 
 ## Running Koinos
 
-Once docker-compose is installed and the node configured, run `docker-compose up -d` to start the node as a daemon.
+Once docker compose is installed and the node configured, run `docker compose up -d` to start the node as a daemon.
 
-To check on the node run `docker-compose logs --tail 1 --follow` to display logs for the node.
+To check on the node run `docker compose logs --tail 1 --follow` to display logs for the node.
 
-The node will automatically start upon system restart. To stop the node, run `docker-compose down`.
+The node will automatically start upon system restart. To stop the node, run `docker compose down`.
