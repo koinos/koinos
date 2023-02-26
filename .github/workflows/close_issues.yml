@@ -6,6 +6,20 @@ on:
 
 jobs:
   close-issues:
-    uses: koinos/koinos-github-workflows/.github/workflows/close_issues.yml@master
-    secrets:
-      github-token: ${{ secrets.ISSUE_MANAGEMENT_TOKEN }}
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/stale@v7
+        with:
+          exempt-issue-labels: "story,task,research"
+          days-before-stale: 30
+          days-before-close: 14
+          stale-issue-label: "stale"
+          stale-pr-label: "stale"
+          stale-issue-message: "This issue is stale because it has been open for 30 days with no activity."
+          close-issue-message: "This issue was closed because it has been inactive for 14 days since being marked as stale."
+          stale-pr-message: "This pull request is stale because it has been open for 30 days with no activity."
+          close-pr-message: "This pull request was closed because it has been inactive for 14 days since being marked as stale."
+          repo-token: ${{ secrets.ISSUE_MANAGEMENT_TOKEN }}
