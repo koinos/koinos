@@ -13,16 +13,14 @@ global:
 # account-history:
 
 block_producer:
-  algorithm: pob                                      # Block production algorithm
-  pob-contract-id: 159myq5YUhhoVWu3wsHKHiJYKPKGUrGiyv # PoB contract address
-  vhp-contract-id: 1AdzuXSpC6K9qtXdCBgD5NUpDNwHjMgrc9 # VHP contract address
-  # producer:                                         # Address at which which blocks are produced
-  # private-key-file: private.key                     # File containing the private key with which blocks are produced
-  # max-inclusion-attempts: 2000                      # Maximum number of transactions attempted to be included in a block
-  # resources-lower-bound: 75                         # Percent resource utilization lower bound target to consider adequate for submission
-  # resources-upper-bound: 90                         # Percent resource utilization upper bound to consider block "full"
-  # gossip-production: false                          # Disable requiring p2p gossip before block production, this is not recommended
-  # approve-proposals:                                # Proposals to approve when producing blocks
+  algorithm: pob                                               # Block production algorithm
+  # producer:                                                  # Address at which which blocks are produced
+  # private-key-file: private.key                              # File containing the private key with which blocks are produced
+  # max-inclusion-attempts: 2000                               # Maximum number of transactions attempted to be included in a block
+  # resources-lower-bound: 75                                  # Percent resource utilization lower bound target to consider adequate for submission
+  # resources-upper-bound: 90                                  # Percent resource utilization upper bound to consider block "full"
+  # gossip-production: false                                   # Disable requiring p2p gossip before block production, this is not recommended
+  # approve-proposals:                                         # Proposals to approve when producing blocks
   # - PROPOSAL_ID
 
 # block_store:
