@@ -10,6 +10,8 @@ repo_url: https://github.com/koinos/koinos
 
 copyright: Copyright &copy;2023 - Koinos Group
 
+docs_dir: content
+
 theme:
   name: material
   icon:
@@ -85,25 +87,25 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
 
 nav:
-  - Home: content/index.md
+  - Home: index.md
   - Quickstart:
-    - Running a Koinos Node: content/quickstart/running-a-koinos-node.md
-    - Block Production: content/quickstart/block-production.md
-    - Developer Guide: content/quickstart/developer-guide.md
-    - Contract Developer Guide: content/quickstart/contract-developer-guide.md
-    - CLI: content/quickstart/cli.md
+    - Running a Koinos Node: quickstart/running-a-koinos-node.md
+    - Block Production: quickstart/block-production.md
+    - Developer Guide: quickstart/developer-guide.md
+    - Contract Developer Guide: quickstart/contract-developer-guide.md
+    - CLI: quickstart/cli.md
   - RPC:
-    - RPC Protocol: content/rpc/rpc-protocol.md
-    - JSON-RPC: content/rpc/json-rpc.md
+    - RPC Protocol: rpc/rpc-protocol.md
+    - JSON-RPC: rpc/json-rpc.md
   - Architecture & Design:
-    - Smart Contracts: content/architecture/smart-contracts.md
-    - Microservices: content/architecture/microservice.md
-    - Interprocess Communication: content/architecture/interprocess-communication.md
-    - Serialization: content/architecture/serialization.md
-    - Contract ABI: content/architecture/contract-abi.md
-    - System Calls: content/architecture/system-calls.md
+    - Smart Contracts: architecture/smart-contracts.md
+    - Microservices: architecture/microservice.md
+    - Interprocess Communication: architecture/interprocess-communication.md
+    - Serialization: architecture/serialization.md
+    - Contract ABI: architecture/contract-abi.md
+    - System Calls: architecture/system-calls.md
   - Guides:
-    - Using the Faucet on Discord: content/tutorials/using-the-faucet-on-discord.md
-    - Custom Types Contract: content/tutorials/C++/custom-types-contract.md
-    - Deploying a Token: content/tutorials/deploying-token.md
-    - Typescript First Smart Contract: content/tutorials/AssemblyScript/typescript-first-smart-contract.md
+    - Using the Faucet on Discord: tutorials/using-the-faucet-on-discord.md
+    - Custom Types Contract: tutorials/C++/custom-types-contract.md
+    - Deploying a Token: tutorials/deploying-token.md
+    - Typescript First Smart Contract: tutorials/AssemblyScript/typescript-first-smart-contract.md
