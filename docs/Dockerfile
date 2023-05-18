@@ -11,7 +11,7 @@ RUN mkdocs build
 
 FROM httpd:2.4-alpine
 COPY --from=builder /build/site/ /usr/local/apache2/htdocs/
-COPY docs/scripts /usr/local/bin/
-RUN mv /usr/local/apache2/htdocs/httpd.conf /usr/local/apache2/conf/httpd.conf
+COPY scripts /usr/local/bin/
+COPY httpd.conf /usr/local/apache2/conf/httpd.conf
 
 ENTRYPOINT [ "/usr/local/bin/start" ]
