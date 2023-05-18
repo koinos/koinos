@@ -1,0 +1,18 @@
+language: minimal
+
+addons:
+  apt:
+    packages:
+      - docker
+    update: true
+
+jobs:
+  include:
+    - os: linux
+      dist: jammy
+
+script:
+  - ci/build.sh
+
+after_success:
+  - ci/after_success.sh
