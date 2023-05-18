@@ -8,4 +8,4 @@ if [ "$TAG" = "master" ]; then
   TAG="latest"
 fi
 
-docker build --no-cache --build-arg -t koinos/koinos-docs:$TAG .
+docker build --no-cache -t koinos/koinos-docs:$TAG .
