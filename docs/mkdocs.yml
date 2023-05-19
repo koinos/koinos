@@ -6,9 +6,9 @@ site_description: Documentaion for Koinos, the world's first free to use blockch
 repo_name: koinos/koinos
 repo_url: https://github.com/koinos/koinos
 
-#edit_uri: blob/master/docs
+edit_uri: blob/master/docs/content
 
-copyright: Copyright &copy;2023 - Koinos Group
+copyright: Copyright 2023 Koinos Group
 
 docs_dir: content
 
