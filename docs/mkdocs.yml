@@ -87,9 +87,8 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
 
 nav:
-  - Home: index.md
   - Quickstart:
-    - Running a Koinos Node: quickstart/running-a-koinos-node.md
+    - index.md
     - Block Production: quickstart/block-production.md
     - Developer Guide: quickstart/developer-guide.md
     - Contract Developer Guide: quickstart/contract-developer-guide.md

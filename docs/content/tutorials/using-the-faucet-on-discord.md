@@ -2,7 +2,7 @@
 
 _**tKOIN**_ is the Koinos blockchain testnet token symbol.
 
-Anyone can participate in the Koinos test network by [running a node](../quickstart/running-a-koinos-node.md). By installing and running the node each user is assigned a public and private key. Using the key a user can receive _**tKOIN**_ from our discord faucet using the instructions below. The private key resides in `~/.koinos/block_producer/private.key` in macOS/Linux and `C:\.koinos` in Windows
+Anyone can participate in the Koinos test network by [running a node](../index.md). By installing and running the node each user is assigned a public and private key. Using the key a user can receive _**tKOIN**_ from our discord faucet using the instructions below. The private key resides in `~/.koinos/block_producer/private.key` in macOS/Linux and `C:\.koinos` in Windows
 
 After starting the node for the first time you can get your public key by looking at the `000.log` file in the `.koinos/block_producer` directory. It should be on the first line with the label "**Public address:**" unless the log file was rotated out. Alternatively, you can take the private key from `.koinos/block_producer/private.key` and import it into Koinos CLI to utilize the account and/or view the public address.
 

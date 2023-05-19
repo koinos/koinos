@@ -8,7 +8,7 @@ Proof-of-Burn has similarities to both Proof-of-Work (PoW) and Proof-of-Stake (P
 
 ## Prerequisites
 
-Please follow our guide on [running a node](./running-a-koinos-node.md). Be sure to start the node with the `--profile all` or `--profile block_producer` option to start the optional block producer microservice.
+Please follow our guide on [running a node](../index.md). Be sure to start the node with the `--profile all` or `--profile block_producer` option to start the optional block producer microservice.
 
 ## Retrieving your address and key
 
