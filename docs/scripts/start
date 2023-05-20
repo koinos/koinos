@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Configure htaccess, if set
+if [ "$HTPASSWD" ]; then
+   echo \
+'AuthType Basic
+AuthName "Access Restricted"
+AuthUserFile "/usr/local/apache2/htdocs/passwords/.htpasswd"
+Require user engineering' >> /usr/local/apache2/htdocs/.htaccess
+
+   mkdir -p /usr/local/apache2/htdocs/passwords/
+   echo $HTPASSWD > /usr/local/apache2/htdocs/passwords/.htpasswd
+fi
+
+exec httpd-foreground
