@@ -105,6 +105,7 @@ nav:
     - System Calls: architecture/system-calls.md
   - Guides:
     - Using the Faucet on Discord: tutorials/using-the-faucet-on-discord.md
+    - Deploy a Contract: tutorials/deploy-a-smart-contract.md
     - Custom Types Contract: tutorials/C++/custom-types-contract.md
     - Deploying a Token: tutorials/deploying-token.md
     - Typescript First Smart Contract: tutorials/AssemblyScript/typescript-first-smart-contract.md
