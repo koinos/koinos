@@ -147,7 +147,7 @@ mycontract.function3                      - Description of function3
 You can also use the help command on your contract commands:
 
 ```
-🔓 > help mycontract.fucntion1
+🔓 > help mycontract.function1
 Description of function1
 Usage: mycontract.function1 <arg1:argType>
 ```
