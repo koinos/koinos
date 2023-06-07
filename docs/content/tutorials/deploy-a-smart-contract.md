@@ -18,7 +18,7 @@ Usage: upload <filename:file> [abi-filename:file] [override-authorize-call-contr
 
 Only the first argument (the WASM bytecode) is required. The other four arguments are all optional.
 
-On Koinos, a contract is an address and vis versa. The importance of this will become apparent later. This is in stark contrast to other blockchains, such as Ethereum, where a contract upload generates a new address.
+On Koinos, a contract is an address and vice versa. The importance of this will become apparent later. This is in stark contrast to other blockchains, such as Ethereum, where a contract upload generates a new address.
 
 If you have not created a wallet in the CLI, you can use the `create` command.
 
