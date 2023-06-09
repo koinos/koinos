@@ -85,7 +85,7 @@ The second argument to upload a contract is the contract ABI. The ABI is metadat
 
 In this ABI there are four entry points to the contract. Human readable descriptions are provided for developer convenience. In the CLI, this is used to generate the help functions. Some functions are labeled as read-only. This indicates that the function has no side effects and can be called outside of a transaction in a normal API call. Functions that are not read-only must be called from within a transaction, meaning they cost mana, can have side effects, are broadcast on the p2p network to all nodes, and are eventually included in a block. They should not be called indiscriminately.
 
-The remaining, `types`, field is a base 64 encoded protobuf descriptor. It can be imported to most Protobuf runtime libraries to interact with reflected messages at runtime. Using these libraries, a smart contract can be interacted with without needing the language-specific generated protobuf files.
+The remaining, `types`, field is a Base64 encoded protobuf descriptor. It can be imported to most Protobuf runtime libraries to interact with reflected messages at runtime. Using these libraries, a smart contract can be interacted with without needing the language-specific generated protobuf files.
 
 A smart contract can be uploaded with or without an ABI. If uploaded with an ABI, the ABI will be stored and retrievable through the Contract Meta Store microservice API. This is the simplest way to distribute your contract's ABI. The Koinos CLI and other tools automatically download the ABI of any contract they interact with.
 
