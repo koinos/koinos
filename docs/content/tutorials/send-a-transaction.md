@@ -13,7 +13,7 @@ Transaction with ID 0x1220c9bf8a71f0b8c7a9eb31a372685b3a9f3c82209c76c378f36f0b6c
 Mana cost: 0.1561714 (Disk: 112, Network: 312, Compute: 568587)
 ```
 
-Upon sending a transaction, the transaction ID is displayed along with the total mana cost and the individual resources consumed. You can view your transaction via a block explorer (such as [KoinosBlocks](https://koinosblocks.com/) or [Koiner](https://koiner.app/)).
+Upon sending a transaction, the transaction ID is displayed along with the total mana cost and the individual resources consumed. You can view your transaction via a block explorer (such as <a href=https://koinosblocks.com/ target="_blank">koinosblocks</a> or <a href=https://koiner.app/ target="_blank">Koiner</a>).
 
 ### Multi-op transactions
 

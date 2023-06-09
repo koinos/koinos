@@ -205,7 +205,7 @@ This will create two build artifacts, `build/src/contract.wasm` and `build/types
 
 We will use the [Koinos Command Line Interface (CLI)](https://github.com/koinos/koinos-cli) to interact with this contract on the blockchain. We need the Application Binary Interface (ABI) to inform the CLI how to invoke methods on the contract. For more information about the ABI file please refer to the [Contract ABI](../../architecture/contract-abi.md) section.
 
-The contract examples repo already contains the [ABI file](https://github.com/koinos/koinos-contract-examples/blob/master/contracts/calculator/calc.abi). The ABI File contains JSON information about each of the entry points as well as the base64 encoded protobuf descriptor file (`types.pb`) that was generated during compilation. Encoding the base64 descriptor file can be done with a simple command.
+The contract examples repo already contains the [ABI file](https://github.com/koinos/koinos-contract-examples/blob/master/contracts/calculator/calc.abi). The ABI File contains JSON information about each of the entry points as well as the Base64 encoded protobuf descriptor file (`types.pb`) that was generated during compilation. Encoding the Base64 descriptor file can be done with a simple command.
 
 ```console
 $ cat types/types.pb | base64
@@ -248,7 +248,7 @@ Cq4DCgpjYWxjLnByb3RvEhVrb2lub3MuY29udHJhY3RzLmNhbGMiKwoNYWRkX2FyZ3VtZW50cxIMCgF4
 }
 ```
 
-> _**Note:** The `"types"` definition comes from the base64 of the `types.pb`._
+> _**Note:** The `"types"` definition comes from the Base64 of the `types.pb`._
 
 ## Uploading and interaction
 
