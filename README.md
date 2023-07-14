@@ -51,3 +51,14 @@ Once docker compose is installed and the node configured, run `docker compose up
 To check on the node run `docker compose logs --tail 1 --follow` to display logs for the node.
 
 The node will automatically start upon system restart. To stop the node, run `docker compose down`.
+
+## Test net contracts
+
+The Koinos test net has different contract addresses than the main net. Below are test net address for system contracts:
+
+tKOIN: `1FaSvLjQJsCJKq5ybmGsMMQs8RQYyVv8ju`
+VHP: `17n12ktwN79sR6ia9DDgCfmw77EgpbTyBi`
+Resources: `16X6cKyqiT8EzPEksRJxXcqMnHMMm9Vxct`
+PoB: `1MAbK5pYkhp9yHnfhYamC3tfSLmVRTDjd9`
+Governance: `17MjUXDCuTX1p9Kyqy48SQkkPfKScoggo`
+Name Service: `13NQnca5chwpKm4ebHbvgvJmXrsSCTayDJ`
