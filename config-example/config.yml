@@ -14,8 +14,6 @@ global:
 
 block_producer:
   algorithm: pob                                      # Block production algorithm
-  pob-contract-id: 198RuEouhgiiaQm7uGfaXS6jqZr6g6nyoR # PoB contract address
-  vhp-contract-id: 1JZqj7dDrK5LzvdJgufYBJNUFo88xBoWC8 # VHP contract address
   # producer:                                         # Address at which which blocks are produced
   # private-key-file: private.key                     # File containing the private key with which blocks are produced
   # max-inclusion-attempts: 2000                      # Maximum number of transactions attempted to be included in a block
