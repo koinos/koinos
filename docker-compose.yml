@@ -8,8 +8,8 @@ services:
          - source: amqp-config
            target: /etc/rabbitmq/rabbitmq.conf
       ports:
-         - "${AMQP_INTERFACE:-127.0.0.1}:5672:5672"
-         - "${AMQP_INTERFACE:-127.0.0.1}:15672:15672"
+         - "${AMQP_INTERFACE:-127.0.0.1}:${AMQP_PORT:-5672}:5672"
+         - "${AMQP_ADMIN_INTERFACE:-127.0.0.1}:${AMQP_ADMIN_PORT:-15672}:15672"
 
    chain:
       image: koinos/koinos-chain:${CHAIN_TAG:-latest}
@@ -64,7 +64,7 @@ services:
       volumes:
          - "${BASEDIR}:/koinos"
       ports:
-         - "${P2P_INTERFACE:-0.0.0.0}:8888:8888"
+         - "${P2P_INTERFACE:-0.0.0.0}:${P2P_PORT:-8888}:8888"
       command: --basedir=/koinos
 
    block_producer:
@@ -97,7 +97,7 @@ services:
       volumes:
          - "${BASEDIR}:/koinos"
       ports:
-         - "${JSONRPC_INTERFACE:-0.0.0.0}:8080:8080"
+         - "${JSONRPC_INTERFACE:-127.0.0.1}:${JSONRPC_PORT:-8080}:8080"
       command: --basedir=/koinos
 
    grpc:
@@ -113,7 +113,7 @@ services:
       volumes:
          - "${BASEDIR}:/koinos"
       ports:
-         - "${GRPC_INTERFACE:-0.0.0.0}:50051:50051"
+         - "${GRPC_INTERFACE:-127.0.0.1}:${GRPC_PORT:-50051}:50051"
       command: --basedir=/koinos
 
    transaction_store:
