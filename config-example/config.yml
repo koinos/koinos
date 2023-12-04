@@ -52,10 +52,7 @@ jsonrpc:
 p2p:
   listen: /ip4/0.0.0.0/tcp/8888                       # Multiaddress on which to listen
   peer:                                               # Peer seed nodes
-    - /dns4/seed.koinos.io/tcp/8888/p2p/Qmd2bkf65yCKVZb2PG3FiRQWzrYgKf47zGBFuoU5qdebEY
-    - /dns4/seed.koinosblocks.com/tcp/8888/p2p/QmUNURuZxSu5wLnmBNJdwGtwjLmV5JxGhu4uNSAS8ZNcze
-    - /dns4/seed-east.burnkoin.com/tcp/8888/p2p/QmYAC9nxqgVt2p8NvmxNFsoMpQS7c4zEBmsZndEBTRHNu4
-    - /dns4/seed-west.burnkoin.com/tcp/8888/p2p/QmcwsnczsFRxgkyYtTWK4dq6tbE5tpE48jtHp7nKAvy22V
+    - /dns4/harbinger-seed.koinos.io/tcp/8888/p2p/QmcGiTpSm6YrmYo3rWoqrCPez2aJY4VdraBQsGsZKwFRuG
   # checkpoint:                                       # Checkpoints required in synced chain
   #  - BLOCK_HEIGHT:BLOCK_ID
   # disable-gossip: true                              # Disables gossip, this is not recommended
