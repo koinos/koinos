@@ -1,6 +1,8 @@
 global:
   amqp: amqp://guest:guest@amqp:5672/                 # AMQP server URL
   log-level: info                                     # Log filtering level (debug, info, warn, error)
+  log-color: true                                     # Enable colors in logs
+  log-datetime: true                                  # Enable datetime prefix in logs
   instance-id: Koinos                                 # ID that uniquely identifies the instance
   fork-algorithm: pob                                 # Fork resolution algorithm (fifo, pob, block-time)
   blacklist:                                          # RPC targets to blacklist, can be an entire microservice (i.e. chain), or specific API calls
@@ -11,22 +13,25 @@ global:
   # - RPC
 
 # account-history:
+  # address-whitelist:                                # Addresses to track
+  # - ADDRESS
 
 block_producer:
-  algorithm: pob                                               # Block production algorithm
-  # producer:                                                  # Address at which which blocks are produced
-  # private-key-file: private.key                              # File containing the private key with which blocks are produced
-  # max-inclusion-attempts: 2000                               # Maximum number of transactions attempted to be included in a block
-  # resources-lower-bound: 75                                  # Percent resource utilization lower bound target to consider adequate for submission
-  # resources-upper-bound: 90                                  # Percent resource utilization upper bound to consider block "full"
-  # gossip-production: false                                   # Disable requiring p2p gossip before block production, this is not recommended
-  # approve-proposals:                                         # Proposals to approve when producing blocks
+  algorithm: pob                                      # Block production algorithm
+  # producer:                                         # Address at which which blocks are produced
+  # private-key-file: private.key                     # File containing the private key with which blocks are produced
+  # max-inclusion-attempts: 2000                      # Maximum number of transactions attempted to be included in a block
+  # resources-lower-bound: 75                         # Percent resource utilization lower bound target to consider adequate for submission
+  # resources-upper-bound: 90                         # Percent resource utilization upper bound to consider block "full"
+  # gossip-production: false                          # Disable requiring p2p gossip before block production, this is not recommended
+  # approve-proposals:                                # Proposals to approve when producing blocks
   # - PROPOSAL_ID
 
 # block_store:
 
 # chain:
   # read-compute-bandwidth-limit: 10000000            # Compute bandwidth limit when reading contracts via the API
+  # system-call-buffer-size: 64000                    # Buffer call in bytes used for the invoke_system_call API
 
 # contract-meta-store:
 
