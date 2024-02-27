@@ -3,6 +3,7 @@ global:
   log-level: info                                     # Log filtering level (debug, info, warn, error)
   log-color: true                                     # Enable colors in logs
   log-datetime: true                                  # Enable datetime prefix in logs
+  log-dir: logs                                       # The directory in which logs are stored
   instance-id: Koinos                                 # ID that uniquely identifies the instance
   fork-algorithm: pob                                 # Fork resolution algorithm (fifo, pob, block-time)
   blacklist:                                          # RPC targets to blacklist, can be an entire microservice (i.e. chain), or specific API calls
