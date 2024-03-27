@@ -8,6 +8,7 @@ global:
   fork-algorithm: pob                                 # Fork resolution algorithm (fifo, pob, block-time)
   blacklist:                                          # RPC targets to blacklist, can be an entire microservice (i.e. chain), or specific API calls
     - block_store.add_block
+    - chain.propose_block
   # jobs: 32                                          # Number of jobs to run
   # reset: true                                       # DANGEROUS: Resets the entire node. To reset a single microservice, set this in the microservice config
   # whitelist:                                        # RPC targets to whitelist
