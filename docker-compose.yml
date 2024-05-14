@@ -159,6 +159,17 @@ services:
         - "${BASEDIR}:/koinos"
       command: --basedir=/koinos
 
+   rest:
+      image: koinos/koinos-rest:${REST_TAG:-latest}
+      restart: always
+      profiles: ["rest", "api", "all"]
+      depends_on:
+         - jsonrpc
+      ports:
+         - "${REST_INTERFACE:-127.0.0.1}:${REST_PORT:-3000}:3000"
+      environment:
+         - JSONRPC_URL=http://jsonrpc:8080/
+
 configs:
    amqp-config:
       file: ./config/rabbitmq.conf
