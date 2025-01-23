@@ -32,6 +32,8 @@ block_producer:
 # block_store:
 
 # chain:
+  # disable-pending-transaction-limit: false          # Disable the pending transaction limit
+  # pending-transaction-limit: 10                     # Per address pending transaction limit
   # read-compute-bandwidth-limit: 10000000            # Compute bandwidth limit when reading contracts via the API
   # system-call-buffer-size: 64000                    # Buffer call in bytes used for the invoke_system_call API
 
