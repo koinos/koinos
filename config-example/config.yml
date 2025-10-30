@@ -58,6 +58,7 @@ p2p:
   peer:                                               # Peer seed nodes
     - /dns4/seed.koinosblocks.com/tcp/8888/p2p/QmUNURuZxSu5wLnmBNJdwGtwjLmV5JxGhu4uNSAS8ZNcze
     - /dns4/seed.koinosfoundation.org/tcp/8888/p2p/QmUCTQEA28NArt3oCZaVc1nbntMbaey24atAdogZ8kfaKg
+    - /dns4/east.burnkoin.com/tcp/8888/p2p/QmYAC9nxqgVt2p8NvmxNFsoMpQS7c4zEBmsZndEBTRHNu4
   # checkpoint:                                       # Checkpoints required in synced chain
   #  - BLOCK_HEIGHT:BLOCK_ID
   # disable-gossip: true                              # Disables gossip, this is not recommended
