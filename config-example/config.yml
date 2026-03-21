@@ -26,6 +26,7 @@ block_producer:
   # resources-lower-bound: 75                         # Percent resource utilization lower bound target to consider adequate for submission
   # resources-upper-bound: 90                         # Percent resource utilization upper bound to consider block "full"
   # gossip-production: false                          # Disable requiring p2p gossip before block production, this is not recommended
+  # pob-production: 100                               # Control the percentage of production, from 1% to 100%
   # approve-proposals:                                # Proposals to approve when producing blocks
   # - PROPOSAL_ID
 
