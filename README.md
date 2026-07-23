@@ -44,6 +44,58 @@ These profiles can be set with the `--profile` options (i.e. `docker compose --p
 
 For more information on docker compose profiles, please read the official [documentation](https://docs.docker.com/compose/profiles/).
 
+## Public Testnet
+
+The public Koinos testnet is a sandbox network for testing wallets, smart contracts, integrations, and block production workflows without using mainnet funds or state. Testnet state can reset, so do not rely on it for production funds, production state, or long-term persistence.
+
+JSON-RPC endpoint:
+
+```text
+https://testnet.koinosfoundation.org/jsonrpc
+```
+
+REST endpoint:
+
+```text
+https://testnet.koinosfoundation.org/v1/...
+```
+
+Health endpoint:
+
+```text
+https://testnet.koinosfoundation.org/health
+```
+
+Retrieve the current chain ID before signing testnet transactions:
+
+```bash
+curl -sS https://testnet.koinosfoundation.org/jsonrpc \
+  -H 'content-type: application/json' \
+  --data '{"jsonrpc":"2.0","id":1,"method":"chain.get_chain_id","params":{}}'
+```
+
+Check chain head:
+
+```bash
+curl -sS https://testnet.koinosfoundation.org/jsonrpc \
+  -H 'content-type: application/json' \
+  --data '{"jsonrpc":"2.0","id":1,"method":"chain.get_head_info","params":{}}'
+```
+
+Telegram faucet:
+
+```text
+https://t.me/KoinosTestnetFaucetBot
+```
+
+Request testnet vKOIN from the faucet:
+
+```text
+/faucet YOUR_KOINOS_ADDRESS
+```
+
+Public testnet operations, faucet source, endpoint documentation, and maintenance runbooks live in [`koinos/koinos-testnet`](https://github.com/koinos/koinos-testnet).
+
 ## Running Koinos
 
 Once docker compose is installed and the node configured, run `docker compose up -d` to start the node as a daemon.
